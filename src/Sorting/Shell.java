@@ -9,19 +9,30 @@ public class Shell extends Sort {
     {
         int h = 1;
 
-        for (int i = 1; i < a.length; i += h)
+        while (h / a.length < 3)
         {
-            for (int j = i; j >= 1; j -= h)
+            h = (h * 3) + 1;
+        }
+
+        while (h >= 1)
+        {
+            for (int i = h; i < a.length; i++)
             {
-                if (less(a[j], a[j - h]))
+                for (int j = i; j >= h; j -= h)
                 {
-                    exchange(a, j, j - h);
-                }
-                else
-                {
-                    break;
+                    if (less(a[j], a[j - h]))
+                    {
+                        exchange(a, j, j - h);
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
             }
+
+            h--;
+            h /= 3;
         }
     }
 }
