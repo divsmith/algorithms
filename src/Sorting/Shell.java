@@ -7,13 +7,15 @@ public class Shell extends Sort {
 
     public void sort(Comparable[] a)
     {
-        for (int i = 1; i < a.length; i++)
+        int h = 1;
+
+        for (int i = 1; i < a.length; i += h)
         {
-            for (int j = i; j >= 1; j--)
+            for (int j = i; j >= 1; j -= h)
             {
-                if (less(a[j], a[j - 1]))
+                if (less(a[j], a[j - h]))
                 {
-                    exchange(a, j, j - 1);
+                    exchange(a, j, j - h);
                 }
                 else
                 {
