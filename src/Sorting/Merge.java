@@ -1,5 +1,10 @@
 package Sorting;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.math.BigDecimal;
+import java.util.Scanner;
+
 /**
  * Created by parker on 4/15/18.
  */
@@ -79,5 +84,27 @@ public class Merge extends Sort {
         }
 
         return true;
+    }
+
+    public static void main(String[] args) throws FileNotFoundException
+    {
+        Scanner scanner = new Scanner(new File(args[0]));
+        int size = scanner.nextInt();
+        Merge merge = new Merge();
+
+        System.out.println("Total Ints: " + size);
+
+        Integer[] unsorted = new Integer[size];
+        for (int i = 0; i < size && scanner.hasNextInt(); i++)
+        {
+            unsorted[i] = scanner.nextInt();
+        }
+
+        BigDecimal start = new BigDecimal(System.currentTimeMillis());
+        merge.sort(unsorted);
+        BigDecimal end = new BigDecimal(System.currentTimeMillis());
+
+        BigDecimal time = (end.subtract(start).divide(new BigDecimal(1000)));
+        System.out.println("Sort Time: " + time);
     }
 }
