@@ -50,23 +50,19 @@ public class Merge extends Sort {
         {
             if (i > mid)
             {
-                arr[k] = aux[j];
-                j++;
+                arr[k] = aux[j++];
             }
             else if (j > high)
             {
-                arr[k] = aux[i];
-                i++;
+                arr[k] = aux[i++];
             }
             else if (less(aux[j], aux[i]))
             {
-                arr[k] = aux[j];
-                j++;
+                arr[k] = aux[j++];
             }
             else
             {
-                arr[k] = aux[i];
-                i++;
+                arr[k] = aux[i++];
             }
         }
 
