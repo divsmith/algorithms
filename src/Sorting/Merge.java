@@ -33,7 +33,7 @@ public class Merge extends Sort {
         merge(arr, aux, low, mid, high);
     }
 
-    public void merge(Comparable[] arr, Comparable[] aux, int low, int mid, int high)
+    private void merge(Comparable[] arr, Comparable[] aux, int low, int mid, int high)
     {
         assert isSorted(arr, low, mid);
         assert isSorted(arr, mid + 1, high);
