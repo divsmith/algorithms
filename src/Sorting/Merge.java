@@ -30,6 +30,12 @@ public class Merge extends Sort {
         int mid = low + (high - low) / 2;
         sort(arr, aux, low, mid);
         sort(arr, aux, mid + 1, high);
+
+        if (!less(arr[mid + 1], arr[mid]))
+        {
+            return;
+        }
+
         merge(arr, aux, low, mid, high);
     }
 
