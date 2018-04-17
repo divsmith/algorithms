@@ -17,12 +17,12 @@ public class Merge extends Sort {
 
     private void sort(Comparable[] arr, Comparable[] aux, int low, int high)
     {
-        if (high >= low)
+        if (high <= low)
         {
             return;
         }
 
-        int mid = (high - low) / 2;
+        int mid = low + (high - low) / 2;
         sort(arr, aux, low, mid);
         sort(arr, aux, mid + 1, high);
         merge(arr, aux, low, mid, high);
