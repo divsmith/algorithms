@@ -48,6 +48,11 @@ public class BottomUpMerge extends Sort {
             aux[k] = arr[k];
         }
 
+        if (!less(arr[mid + 1], arr[mid]))
+        {
+            return;
+        }
+
         for (int k = low; k <= high; k++)
         {
             if (i > mid)
