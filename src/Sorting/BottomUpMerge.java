@@ -7,7 +7,18 @@ public class BottomUpMerge extends Sort {
 
     public void sort(Comparable[] arr)
     {
+        Comparable[] aux = new Comparable[arr.length];
+        int mergeSize = 1;
 
+        while (mergeSize <= ((arr.length) /2))
+        {
+            for (int i = 0; i < (arr.length - mergeSize); i += mergeSize * 2)
+            {
+                merge(arr, aux, i, i + (mergeSize / 2), i + mergeSize);
+            }
+
+            mergeSize *= 2;
+        }
     }
 
     private void merge(Comparable[] arr, Comparable[] aux, int low, int mid, int high)
