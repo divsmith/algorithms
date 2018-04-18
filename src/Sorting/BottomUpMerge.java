@@ -15,11 +15,20 @@ public class BottomUpMerge extends Sort {
         Comparable[] aux = new Comparable[arr.length];
         int mergeSize = 1;
 
-        while (mergeSize <= ((arr.length) /2))
+        while (mergeSize <= (arr.length - 1))
         {
             for (int i = 0; i < (arr.length - mergeSize); i += mergeSize * 2)
             {
-                merge(arr, aux, i, i + (mergeSize - 1), i + (mergeSize * 2) - 1);
+                int low = i;
+                int mid = i + (mergeSize - 1);
+                int high = i + (mergeSize * 2) - 1;
+
+                if (high > arr.length - 1)
+                {
+                    high = arr.length - 1;
+                }
+
+                merge(arr, aux, low, mid, high);
             }
 
             mergeSize *= 2;
