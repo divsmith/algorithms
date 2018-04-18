@@ -12,6 +12,9 @@ public class BottomUpMerge extends Sort {
 
     private void merge(Comparable[] arr, Comparable[] aux, int low, int mid, int high)
     {
+        assert isSorted(arr, low, mid);
+        assert isSorted(arr, mid + 1, high);
+
         int i = low;
         int j = mid + 1;
 
@@ -39,6 +42,8 @@ public class BottomUpMerge extends Sort {
                 arr[k] = aux[i++];
             }
         }
+
+        assert isSorted(arr, low, high);
     }
 
     private Boolean isSorted(Comparable[] arr, int low, int high)
