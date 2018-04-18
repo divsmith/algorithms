@@ -9,4 +9,35 @@ public class BottomUpMerge extends Sort {
     {
 
     }
+
+    private void merge(Comparable[] arr, Comparable[] aux, int low, int mid, int high)
+    {
+        int i = low;
+        int j = mid + 1;
+
+        for (int k = low; k <= high; k++)
+        {
+            aux[k] = arr[k];
+        }
+
+        for (int k = low; k <= high; k++)
+        {
+            if (i > mid)
+            {
+                arr[k] = aux[j++];
+            }
+            else if (j > high)
+            {
+                arr[k] = aux[i++];
+            }
+            else if (less(aux[j], aux[i]))
+            {
+                arr[k] = aux[j++];
+            }
+            else
+            {
+                arr[k] = aux[i++];
+            }
+        }
+    }
 }
