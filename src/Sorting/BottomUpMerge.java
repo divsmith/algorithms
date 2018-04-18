@@ -14,7 +14,7 @@ public class BottomUpMerge extends Sort {
         {
             for (int i = 0; i < (arr.length - mergeSize); i += mergeSize * 2)
             {
-                merge(arr, aux, i, i + (mergeSize / 2), i + mergeSize);
+                merge(arr, aux, i, i + (mergeSize / 2), i + (mergeSize * 2) - 1);
             }
 
             mergeSize *= 2;
