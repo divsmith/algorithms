@@ -13,6 +13,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class BottomUpMergeTest {
 
     @Test
+    void test_sort_works_2_elements()
+    {
+        Integer[] arr = {16, 15};
+        Integer[] sorted = {15, 16};
+
+        BottomUpMerge merge = new BottomUpMerge();
+        merge.sort(arr);
+
+        Assertions.assertTrue(Arrays.equals(arr, sorted));
+    }
+
+    @Test
     void test_sort_works()
     {
         Integer[] arr = {7, 9, 16, 15, 14, 8, 2, 10, 1, 13, 3, 11, 12, 5, 4, 6};
