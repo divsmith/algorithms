@@ -25,6 +25,18 @@ class BottomUpMergeTest {
     }
 
     @Test
+    void test_sort_works_3_elements()
+    {
+        Integer[] arr = {16, 15, 14};
+        Integer[] sorted = {14, 15, 16};
+
+        BottomUpMerge merge = new BottomUpMerge();
+        merge.sort(arr);
+
+        Assertions.assertTrue(Arrays.equals(arr, sorted));
+    }
+
+    @Test
     void test_sort_works_4_elements()
     {
         Integer[] arr = {16, 15, 3, 2};
