@@ -3,6 +3,7 @@ package Sorting;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -12,12 +13,17 @@ public class Selection extends Sort {
 
     public void sort(Comparable[] arr)
     {
+        sort(arr, BY_COMPARABLE);
+    }
+
+    public void sort(Object[] arr, Comparator comparator)
+    {
         for (int i = 0; i < arr.length; i++)
         {
             int min = i;
             for (int j = i + 1; j < arr.length; j++)
             {
-                if (less(arr[j], arr[min]))
+                if (less(comparator, arr[j], arr[min]))
                 {
                     min = j;
                 }
