@@ -3,6 +3,7 @@ package Sorting;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Scanner;
  */
 public class BottomUpMerge extends Sort {
 
-    public void sort(Comparable[] arr)
+    public void sort(Object[] arr, Comparator comparator)
     {
         Comparable[] aux = new Comparable[arr.length];
         int mergeSize = 1;
@@ -28,17 +29,22 @@ public class BottomUpMerge extends Sort {
                     high = arr.length - 1;
                 }
 
-                merge(arr, aux, low, mid, high);
+                merge(comparator, arr, aux, low, mid, high);
             }
 
             mergeSize *= 2;
         }
     }
 
-    private void merge(Comparable[] arr, Comparable[] aux, int low, int mid, int high)
+    public void sort(Comparable[] arr)
     {
-        assert isSorted(arr, low, mid);
-        assert isSorted(arr, mid + 1, high);
+        sort(arr, BY_COMPARABLE);
+    }
+
+    private void merge(Comparator c, Object[] arr, Object[] aux, int low, int mid, int high)
+    {
+        assert isSorted(c, arr, low, mid);
+        assert isSorted(c, arr, mid + 1, high);
 
         int i = low;
         int j = mid + 1;
@@ -48,7 +54,7 @@ public class BottomUpMerge extends Sort {
             aux[k] = arr[k];
         }
 
-        if (!less(arr[mid + 1], arr[mid]))
+        if (!less(c, arr[mid + 1], arr[mid]))
         {
             return;
         }
@@ -63,7 +69,7 @@ public class BottomUpMerge extends Sort {
             {
                 arr[k] = aux[i++];
             }
-            else if (less(aux[j], aux[i]))
+            else if (less(c, aux[j], aux[i]))
             {
                 arr[k] = aux[j++];
             }
@@ -73,14 +79,14 @@ public class BottomUpMerge extends Sort {
             }
         }
 
-        assert isSorted(arr, low, high);
+        assert isSorted(c, arr, low, high);
     }
 
-    private Boolean isSorted(Comparable[] arr, int low, int high)
+    private Boolean isSorted(Comparator c, Object[] arr, int low, int high)
     {
         for (int i = low + 1; i <= high; i++)
         {
-            if (less(arr[i], arr[i - 1]))
+            if (less(c, arr[i], arr[i - 1]))
             {
                 return false;
             }
