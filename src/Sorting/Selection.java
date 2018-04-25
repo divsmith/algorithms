@@ -11,11 +11,6 @@ import java.util.Scanner;
  */
 public class Selection extends Sort {
 
-    public void sort(Comparable[] arr)
-    {
-        sort(arr, BY_COMPARABLE);
-    }
-
     public void sort(Object[] arr, Comparator comparator)
     {
         for (int i = 0; i < arr.length; i++)

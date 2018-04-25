@@ -36,11 +36,6 @@ public class BottomUpMerge extends Sort {
         }
     }
 
-    public void sort(Comparable[] arr)
-    {
-        sort(arr, BY_COMPARABLE);
-    }
-
     private void merge(Comparator c, Object[] arr, Object[] aux, int low, int mid, int high)
     {
         assert isSorted(c, arr, low, mid);

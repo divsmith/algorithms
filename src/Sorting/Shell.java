@@ -42,11 +42,6 @@ public class Shell extends Sort {
         }
     }
 
-    public void sort(Comparable[] a)
-    {
-        sort(a, BY_COMPARABLE);
-    }
-
     public static void main(String[] args) throws FileNotFoundException
     {
         Scanner scanner = new Scanner(new File(args[0]));

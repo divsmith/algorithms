@@ -11,11 +11,6 @@ import java.util.Scanner;
  */
 public class Insertion extends Sort{
 
-    public void sort(Comparable[] a)
-    {
-        sort(a, BY_COMPARABLE);
-    }
-
     public void sort(Object[] a, Comparator comparator)
     {
         for (int i = 1; i < a.length; i++)

@@ -11,11 +11,6 @@ import java.util.Scanner;
  */
 public class Merge extends Sort {
 
-    public void sort(Comparable[] arr)
-    {
-        sort(arr, BY_COMPARABLE);
-    }
-
     public void sort(Object[] arr, Comparator comparator)
     {
         int low = 0;

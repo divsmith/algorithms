@@ -7,7 +7,10 @@ import java.util.Comparator;
  */
 public abstract class Sort {
 
-    public abstract void sort(Comparable[] arr);
+    public void sort(Comparable[] arr)
+    {
+        sort(arr, BY_COMPARABLE);
+    }
 
     public abstract void sort(Object[] arr, Comparator comparator);
 
