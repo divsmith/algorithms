@@ -9,6 +9,8 @@ public abstract class Sort {
 
     public abstract void sort(Comparable[] arr);
 
+    public abstract void sort(Object[] arr, Comparator comparator);
+
     protected boolean less(Comparator c, Object v, Object w)
     {
         return c.compare(v, w) < 0;
