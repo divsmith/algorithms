@@ -3,6 +3,7 @@ package Sorting;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -12,15 +13,20 @@ public class Merge extends Sort {
 
     public void sort(Comparable[] arr)
     {
+        sort(arr, BY_COMPARABLE);
+    }
+
+    public void sort(Object[] arr, Comparator comparator)
+    {
         int low = 0;
         int high = arr.length - 1;
 
-        Comparable[] aux = new Comparable[arr.length];
+        Object[] aux = new Object[arr.length];
 
-        sort(arr, aux, low, high);
+        sort(comparator, arr, aux, low, high);
     }
 
-    private void sort(Comparable[] arr, Comparable[] aux, int low, int high)
+    private void sort(Comparator c, Object[] arr, Object[] aux, int low, int high)
     {
         if (high <= low)
         {
@@ -28,21 +34,21 @@ public class Merge extends Sort {
         }
 
         int mid = low + (high - low) / 2;
-        sort(arr, aux, low, mid);
-        sort(arr, aux, mid + 1, high);
+        sort(c, arr, aux, low, mid);
+        sort(c, arr, aux, mid + 1, high);
 
-        if (!less(arr[mid + 1], arr[mid]))
+        if (!less(c, arr[mid + 1], arr[mid]))
         {
             return;
         }
 
-        merge(arr, aux, low, mid, high);
+        merge(c, arr, aux, low, mid, high);
     }
 
-    private void merge(Comparable[] arr, Comparable[] aux, int low, int mid, int high)
+    private void merge(Comparator c, Object[] arr, Object[] aux, int low, int mid, int high)
     {
-        assert isSorted(arr, low, mid);
-        assert isSorted(arr, mid + 1, high);
+        assert isSorted(c, arr, low, mid);
+        assert isSorted(c, arr, mid + 1, high);
 
         for (int k = low; k <= high; k++)
         {
@@ -62,7 +68,7 @@ public class Merge extends Sort {
             {
                 arr[k] = aux[i++];
             }
-            else if (less(aux[j], aux[i]))
+            else if (less(c, aux[j], aux[i]))
             {
                 arr[k] = aux[j++];
             }
@@ -72,14 +78,14 @@ public class Merge extends Sort {
             }
         }
 
-        assert isSorted(arr, low, high);
+        assert isSorted(c, arr, low, high);
     }
 
-    private Boolean isSorted(Comparable[] arr, int low, int high)
+    private Boolean isSorted(Comparator c, Object[] arr, int low, int high)
     {
         for (int i = low + 1; i <= high; i++)
         {
-            if (less(arr[i], arr[i - 1]))
+            if (less(c, arr[i], arr[i - 1]))
             {
                 return false;
             }
