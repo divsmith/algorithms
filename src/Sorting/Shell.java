@@ -3,6 +3,7 @@ package Sorting;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Scanner;
  */
 public class Shell extends Sort {
 
-    public void sort(Comparable[] a)
+    public void sort(Object[] a, Comparator comparator)
     {
         int h = 1;
 
@@ -25,7 +26,7 @@ public class Shell extends Sort {
             {
                 for (int j = i; j >= h; j -= h)
                 {
-                    if (less(a[j], a[j - h]))
+                    if (less(comparator, a[j], a[j - h]))
                     {
                         exchange(a, j, j - h);
                     }
@@ -39,6 +40,11 @@ public class Shell extends Sort {
             h--;
             h /= 3;
         }
+    }
+
+    public void sort(Comparable[] a)
+    {
+        sort(a, BY_COMPARABLE);
     }
 
     public static void main(String[] args) throws FileNotFoundException
