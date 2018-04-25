@@ -1,5 +1,7 @@
 package Sorting;
 
+import java.util.Comparator;
+
 /**
  * Created by parker on 4/8/18.
  */
@@ -7,15 +9,25 @@ public abstract class Sort {
 
     public abstract void sort(Comparable[] arr);
 
-    protected boolean less(Comparable v, Comparable w)
+    protected boolean less(Comparator c, Object v, Object w)
     {
-        return v.compareTo(w) < 0;
+        return c.compare(v, w) < 0;
     }
 
-    protected void exchange(Comparable[] arr, int i, int j)
+    protected void exchange(Object[] arr, int i, int j)
     {
-        Comparable swap = arr[i];
+        Object swap = arr[i];
         arr[i] = arr[j];
         arr[j] = swap;
+    }
+
+    protected static ComparableComparison BY_COMPARABLE = new ComparableComparison();
+
+    protected static class ComparableComparison implements Comparator<Comparable>
+    {
+        public int compare(Comparable v, Comparable w)
+        {
+            return v.compareTo(w);
+        }
     }
 }
