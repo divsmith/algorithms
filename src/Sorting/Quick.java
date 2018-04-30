@@ -9,10 +9,24 @@ public class Quick extends Sort {
 
     @Override
     public void sort(Object[] arr, Comparator comparator) {
+        // Shuffle
 
+        sort(arr, 0, arr.length - 1, comparator);
     }
 
-    private int partition(Comparable[] a, int low, int high, Comparator c)
+    private void sort(Object[] arr, int low, int high, Comparator c)
+    {
+        if (low >= high)
+        {
+            return;
+        }
+
+        int j = partition(arr, low, high, c);
+        sort(arr, low, j - 1, c);
+        sort(arr, j + 1, high, c);
+    }
+
+    private int partition(Object[] a, int low, int high, Comparator c)
     {
         int i = low;
         int j = high + 1;
