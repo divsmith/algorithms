@@ -11,4 +11,40 @@ public class Quick extends Sort {
     public void sort(Object[] arr, Comparator comparator) {
 
     }
+
+    private int partition(Comparable[] a, int low, int high, Comparator c)
+    {
+        int i = low;
+        int j = high + 1;
+
+        while (true)
+        {
+            while (less(c, a[++i], a[low]))
+            {
+                if (i == high)
+                {
+                    break;
+                }
+            }
+
+            while (less(c, a[low], a[--j]))
+            {
+                if (j == low)
+                {
+                    break;
+                }
+            }
+
+            if (i >= j)
+            {
+                break;
+            }
+
+            exchange(a, i, j);
+        }
+
+        exchange(a, low, j);
+
+        return j;
+    }
 }
