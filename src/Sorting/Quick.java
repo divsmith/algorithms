@@ -1,5 +1,7 @@
 package Sorting;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 /**
@@ -10,7 +12,7 @@ public class Quick extends Sort {
     @Override
     public void sort(Object[] arr, Comparator comparator) {
         // Shuffle
-
+        Collections.shuffle(Arrays.asList(arr));
         sort(arr, 0, arr.length - 1, comparator);
     }
 
