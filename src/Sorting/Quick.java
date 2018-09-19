@@ -3,6 +3,8 @@ package Sorting;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by parker on 4/29/18.
@@ -12,8 +14,21 @@ public class Quick extends Sort {
     @Override
     public void sort(Object[] arr, Comparator comparator) {
         // Shuffle
-        Collections.shuffle(Arrays.asList(arr));
+        shuffleArray(arr);
         sort(arr, 0, arr.length - 1, comparator);
+    }
+
+    static void shuffleArray(Object[] arr)
+    {
+        Random rnd = ThreadLocalRandom.current();
+        for (int i = arr.length - 1; i > 0; i--)
+        {
+            int index = rnd.nextInt(i + 1);
+
+            Object a = arr[index];
+            arr[index] = arr[i];
+            arr[i] = a;
+        }
     }
 
     private void sort(Object[] arr, int low, int high, Comparator c)
